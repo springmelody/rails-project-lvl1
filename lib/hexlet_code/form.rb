@@ -3,6 +3,7 @@
 module HexletCode
   class Error < StandardError; end
 
-  # class Form
-  # end
+  def self.form_for(struct, _attr)
+    struct
+  end
 end
