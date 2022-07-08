@@ -21,6 +21,13 @@ module HexletCode
     def input(key, **kwargs)
       type = kwargs.empty? ? :input : kwargs[:as]
       @result << (HexletCode.const_get type.capitalize).new(@model, key).build
+    end
+
+    def submit
+      @result << HexletCode::Tag.build('input', { name: 'commit', type: 'submit', value: 'Save' })
+    end
+
+    def build_form
       form_tag_start, form_tag_end = form_wrapper.split('><')
       "#{form_tag_start}>#{@result.join}<#{form_tag_end}"
     end

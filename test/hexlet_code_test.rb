@@ -27,6 +27,7 @@ class HexletCodeTest < Minitest::Test
     result = HexletCode.form_for user do |f|
       f.input :name
       f.input :job, as: :text
+      f.submit
     end
     assert { expected == result }
   end

@@ -10,5 +10,6 @@ module HexletCode
   def self.form_for(model, url: '#', &block)
     form = HexletCode::Form.new(model, url)
     block.call(form)
+    form.build_form
   end
 end
