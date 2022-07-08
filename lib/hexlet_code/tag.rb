@@ -16,7 +16,7 @@ module HexletCode
     end
 
     def self.build_single_tag(tag, attr)
-      "<#{tag} #{get_attr(attr)}>"
+      "<#{tag}#{get_attr(attr)}>"
     end
 
     def self.build_paired_tag(tag, attr)
