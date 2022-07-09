@@ -23,8 +23,8 @@ module HexletCode
       @result << (HexletCode.const_get type.capitalize).new(@model, key).build
     end
 
-    def submit
-      @result << HexletCode::Tag.build('input', { name: 'commit', type: 'submit', value: 'Save' })
+    def submit(value = 'Save')
+      @result << HexletCode::Tag.build('input', { name: 'commit', type: 'submit', value: value })
     end
 
     def build_form
