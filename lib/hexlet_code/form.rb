@@ -19,8 +19,8 @@ module HexletCode
     end
 
     def input(key, **kwargs)
-      type = kwargs.empty? ? :input : kwargs[:as]
-      @result << (HexletCode.const_get type.capitalize).new(@model, key).build
+      type = kwargs[:as] || :input
+      @result << (HexletCode.const_get type.capitalize).new(@model, key, kwargs).build
     end
 
     def submit(value = 'Save')

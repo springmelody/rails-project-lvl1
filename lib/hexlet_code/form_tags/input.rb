@@ -4,9 +4,10 @@ require_relative '../tag'
 
 module HexletCode
   class Input
-    def initialize(model, key)
+    def initialize(model, key, kwargs)
       @model = model
       @key = key
+      @class = kwargs[:class] || nil
     end
 
     def label
@@ -14,6 +15,9 @@ module HexletCode
     end
 
     def input
+      width_class = HexletCode::Tag.build('input', { name: @key, type: 'text', value: @model[@key], class: @class })
+      return width_class if @class
+
       HexletCode::Tag.build('input', { name: @key, type: 'text', value: @model[@key] })
     end
 
