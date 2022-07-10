@@ -8,6 +8,7 @@ module HexletCode
       @model = model
       @key = key
       @class = kwargs[:class] || nil
+      # value empty?
     end
 
     def label
