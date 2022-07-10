@@ -25,7 +25,7 @@ module HexletCode
     end
 
     def self.get_attr(attr)
-      attr.map { |key, value| " #{key}=\"#{value}\"" }.join
+      attr.map { |key, value| " #{key}=\"#{value}\"" unless key.empty? }.join
     end
   end
 end

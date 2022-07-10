@@ -8,6 +8,8 @@ module HexletCode
       @model = model
       @key = key
       @class = kwargs[:class] || nil
+      @kwargs = kwargs
+      # byebug
       # value empty?
     end
 
@@ -16,10 +18,7 @@ module HexletCode
     end
 
     def input
-      width_class = HexletCode::Tag.build('input', { name: @key, type: 'text', value: @model[@key], class: @class })
-      return width_class if @class
-
-      HexletCode::Tag.build('input', { name: @key, type: 'text', value: @model[@key] })
+      HexletCode::Tag.build('input', { name: @key, type: 'text', value: @model[@key] }.merge(@kwargs))
     end
 
     def build
