@@ -9,11 +9,10 @@ class HexletCodeTest < Minitest::Test
   #   user = User.new name: 'rob', job: 'hexlet', gender: 'm'
   #   expected = File.read("#{File.dirname(__FILE__)}/fixtures/form.html").strip
   #   result = HexletCode.form_for user do |f|
-  #     # f.input :name, class: 'user-input'
+  #     f.input :name, class: 'user-input'
   #     # f.input :job, as: :text, rows: 12, col: 15
-  #     # f.submit
-  #     f.input :company
-  #     f.submit 'Boom!'
+  #     # f.input :company
+  #     # f.submit 'Boom!'
   #   end
   #   assert { expected == result }
   # end
