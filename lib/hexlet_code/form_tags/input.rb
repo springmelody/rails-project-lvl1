@@ -7,7 +7,8 @@ module HexletCode
     def initialize(model, key, kwargs = {})
       @key = key
       @kwargs = kwargs
-      @value = model.members.include?(@key) ? model[@key] : ''
+      @value = model.public_send(key)
+      # byebug
       # value empty?
     end
 
