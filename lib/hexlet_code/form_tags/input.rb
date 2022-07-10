@@ -9,7 +9,7 @@ module HexletCode
       @key = key
       @class = kwargs[:class] || nil
       @kwargs = kwargs
-      # byebug
+      @value = @model.include?(@key) ? @model[@key] : ''
       # value empty?
     end
 
@@ -18,7 +18,7 @@ module HexletCode
     end
 
     def input
-      HexletCode::Tag.build('input', { name: @key, type: 'text', value: @model[@key] }.merge(@kwargs))
+      HexletCode::Tag.build('input', { name: @key, type: 'text', value: @value }.merge(@kwargs))
     end
 
     def build
