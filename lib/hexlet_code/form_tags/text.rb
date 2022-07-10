@@ -4,7 +4,7 @@ require_relative '../tag'
 
 module HexletCode
   class Text
-    def initialize(model, key, kwargs)
+    def initialize(model, key, kwargs = {})
       @model = model
       @key = key
       @kwargs = kwargs
