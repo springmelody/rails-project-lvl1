@@ -16,10 +16,10 @@ jobs:
         run: bundle exec rake
 
       - name: Install dependencies
-        run: make install
+        run: bundle install
 
       - name: Run Rubocop
-        run: make lint
+        run: rubocop
 
       - name: Run Test
-        run: make test
+        run: rake test
