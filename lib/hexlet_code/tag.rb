@@ -24,8 +24,8 @@ module HexletCode
       "<#{tag}#{get_attr(attr)}>#{content}</#{tag}>"
     end
 
-    def self.get_attr(attr)
-      attr.map { |key, value| " #{key}=\"#{value}\"" unless key.empty? }.join
+    def self.get_attr(options_part)
+      options_part.map { |key, value| " #{key}=\"#{value}\"" unless key.empty? }.join
     end
   end
 end
