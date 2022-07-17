@@ -3,7 +3,6 @@
 require_relative 'hexlet_code/version'
 require_relative 'hexlet_code/form'
 require_relative 'hexlet_code/tag'
-# adds autoload
 
 module HexletCode
   class Error < StandardError; end

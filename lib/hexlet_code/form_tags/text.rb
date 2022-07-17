@@ -8,10 +8,6 @@ module HexletCode
       @model = model
       @key = key
       @kwargs = kwargs
-      # @default_params = { cols: 20, rows: 40 }
-      # @class = kwargs[:class] || nil
-      # @options = {}
-      # byebug
     end
 
     def label

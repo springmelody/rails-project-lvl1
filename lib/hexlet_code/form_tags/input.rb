@@ -8,8 +8,6 @@ module HexletCode
       @key = key
       @kwargs = kwargs
       @value = model.public_send(key)
-      # byebug
-      # value empty?
     end
 
     def label

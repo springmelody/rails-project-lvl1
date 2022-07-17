@@ -20,7 +20,6 @@ module HexletCode
 
     def input(key, **kwargs)
       type = kwargs[:as] || :input
-      # byebug
       @result << (HexletCode.const_get type.capitalize).new(@model, key, kwargs).build
     end
 
