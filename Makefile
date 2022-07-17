@@ -2,12 +2,12 @@ install:
 	bundle install
 
 lint:
-	rubocop
+	bundle exec rubocop
 
 test:
 	rake test
 
 lint-fix:
-	rubocop -A
+	bundle exec rubocop -A
 
 .PHONY: test
