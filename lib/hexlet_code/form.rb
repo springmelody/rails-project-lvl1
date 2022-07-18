@@ -8,14 +8,11 @@ module HexletCode
   class Error < StandardError; end
 
   class Form
-    def initialize(model, url)
+    def initialize(model, options)
       @model = model
-      @url = url
+      @url = options[:url] || '#'
+      @options = options
       @result = []
-    end
-
-    def form_wrapper
-      HexletCode::Tag.build('form', { action: @url, method: 'post' })
     end
 
     def input(key, **kwargs)
@@ -28,8 +25,7 @@ module HexletCode
     end
 
     def build_form
-      form_tag_start, form_tag_end = form_wrapper.split('><')
-      "#{form_tag_start}>#{@result.join}<#{form_tag_end}"
+      HexletCode::Tag.build('form', { action: @url, method: 'post' }.merge(@options.except(:url))) { @result.join }
     end
   end
 end

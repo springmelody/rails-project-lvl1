@@ -4,28 +4,19 @@ module HexletCode
   class Error < StandardError; end
 
   class Tag
-    def self.build(tag, attrs, &block)
-      return build_paired_tag(tag, attrs, &block) if paired? tag
-
-      build_single_tag(tag, attrs)
+    def self.build(tag, attrs = {})
+      content = block_given? ? yield : ''
+      return "<#{tag}#{get_attr(attrs)}>#{content}</#{tag}>" if paired?(tag)
+      "<#{tag}#{get_attr(attrs)}>"
     end
 
     def self.paired?(tag)
       single_tags = %w[input br img]
-      !single_tags.include? tag
-    end
-
-    def self.build_single_tag(tag, attr)
-      "<#{tag}#{get_attr(attr)}>"
-    end
-
-    def self.build_paired_tag(tag, attr)
-      content = block_given? ? yield : ''
-      "<#{tag}#{get_attr(attr)}>#{content}</#{tag}>"
+      not single_tags.include? tag
     end
 
     def self.get_attr(options_part)
-      options_part.map { |key, value| " #{key}=\"#{value}\"" unless key.empty? }.join
+      options_part.map { |key, value| " #{key}=\"#{value}\"" unless value.nil? }.join
     end
   end
 end

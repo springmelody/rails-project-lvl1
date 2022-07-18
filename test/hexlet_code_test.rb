@@ -5,25 +5,23 @@ require 'test_helper'
 User = Struct.new(:name, :job, :gender, keyword_init: true)
 
 class HexletCodeTest < Minitest::Test
-  # def test_form
-  #   user = User.new name: 'rob', job: 'hexlet', gender: 'm'
-  #   expected = File.read("#{File.dirname(__FILE__)}/fixtures/form.html").strip
-  #   result = HexletCode.form_for user do |f|
-  #     # f.input :name, class: 'user-input'
-  #     # f.input :job, as: :text, rows: 12, col: 15
-  #     # f.input :company
-  #     # f.submit 'Boom!'
-  #     f.input :age
-  #   end
-  #   assert { expected == result }
-  # end
+  def test_form_simple
+    user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+    expected = File.read("#{File.dirname(__FILE__)}/fixtures/empty_form.html").strip
+    result = HexletCode.form_for user, url: '/users'
 
-  # def test_form_simple
-  #   user = User.new name: 'rob', job: 'hexlet', gender: 'm'
-  #   expected = File.read("#{File.dirname(__FILE__)}/fixtures/form_simple.html").strip
-  #   result = HexletCode.form_for user do |f|
-  #     f.input :name
-  #   end
-  #   assert { expected == result }
-  # end
+    assert { expected == result }
+  end
+
+  def test_form
+    user = User.new job: 'hexlet'
+    expected = File.read("#{File.dirname(__FILE__)}/fixtures/form.html").strip
+    result = HexletCode.form_for user do |f|
+      f.input :name
+      f.input :job
+      f.submit
+    end
+
+    assert { expected == result }
+  end
 end
