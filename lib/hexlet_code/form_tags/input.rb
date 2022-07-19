@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../tag'
-
 module HexletCode
+  autoload(:Tag, 'hexlet_code/tag')
+
   class Input
     def initialize(model, key, kwargs = {})
       @key = key
@@ -11,11 +11,11 @@ module HexletCode
     end
 
     def label
-      HexletCode::Tag.build('label', { for: @key }) { @key.capitalize }
+      Tag.build('label', { for: @key }) { @key.capitalize }
     end
 
     def input
-      HexletCode::Tag.build('input', { name: @key, type: 'text', value: @value }.merge(@kwargs))
+      Tag.build('input', { name: @key, type: 'text', value: @value }.merge(@kwargs))
     end
 
     def build

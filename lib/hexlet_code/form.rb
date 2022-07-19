@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'tag'
-require_relative 'form_tags/input'
-require_relative 'form_tags/text'
-
 module HexletCode
+  autoload(:Tag, 'hexlet_code/tag')
+  autoload(:Input, 'hexlet_code/form_tags/input')
+  autoload(:Text, 'hexlet_code/form_tags/text')
+
   class Error < StandardError; end
 
   class Form
@@ -21,11 +21,11 @@ module HexletCode
     end
 
     def submit(value = 'Save')
-      @result << HexletCode::Tag.build('input', { name: 'commit', type: 'submit', value: value })
+      @result << Tag.build('input', { name: 'commit', type: 'submit', value: value })
     end
 
     def build_form
-      HexletCode::Tag.build('form', { action: @url, method: 'post' }.merge(@options.except(:url))) { @result.join }
+      Tag.build('form', { action: @url, method: 'post' }.merge(@options.except(:url))) { @result.join }
     end
   end
 end
