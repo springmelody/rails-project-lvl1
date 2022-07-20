@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module HexletCode
-  class Error < StandardError; end
-
   class Tag
     def self.build(tag, attrs = {})
       content = block_given? ? yield : ''

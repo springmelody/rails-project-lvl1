@@ -1,25 +1,18 @@
 # frozen_string_literal: true
 
 module HexletCode
-  autoload(:Tag, 'hexlet_code/tag')
-
   class Text
-    def initialize(model, key, kwargs = {})
+    def initialize(model, key, options = {})
       @model = model
       @key = key
-      @kwargs = kwargs
-    end
-
-    def label
-      Tag.build('label', { for: @key }) { @key.capitalize }
-    end
-
-    def input
-      [Tag.build('textarea', { name: @key }.merge(@kwargs)) { @model[@key] }]
+      @options = options
     end
 
     def build
-      [label, input]
+      [
+        { tag: 'label', attrs: { for: @key }, content: @key.capitalize },
+        { tag: 'textarea', attrs: { name: @key }.merge(@options), content: @model[@key] }
+      ]
     end
   end
 end

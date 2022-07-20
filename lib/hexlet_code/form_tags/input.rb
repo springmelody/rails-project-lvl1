@@ -1,25 +1,18 @@
 # frozen_string_literal: true
 
 module HexletCode
-  autoload(:Tag, 'hexlet_code/tag')
-
   class Input
-    def initialize(model, key, kwargs = {})
+    def initialize(model, key, options = {})
       @key = key
-      @kwargs = kwargs
+      @options = options
       @value = model.public_send(key)
     end
 
-    def label
-      Tag.build('label', { for: @key }) { @key.capitalize }
-    end
-
-    def input
-      Tag.build('input', { name: @key, type: 'text', value: @value }.merge(@kwargs))
-    end
-
     def build
-      [label, input]
+      [
+        { tag: 'label', attrs: { for: @key }, content: @key.capitalize },
+        { tag: 'input', attrs: { name: @key, type: 'text', value: @value }.merge(@options) }
+      ]
     end
   end
 end
