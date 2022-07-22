@@ -4,9 +4,9 @@ module HexletCode
   class Tag
     def self.build(tag, attrs = {})
       content = block_given? ? yield : ''
-      return "<#{tag}#{get_attr(attrs)}>#{content}</#{tag}>" if paired?(tag)
+      return "<#{tag}#{get_attrs(attrs)}>#{content}</#{tag}>" if paired?(tag)
 
-      "<#{tag}#{get_attr(attrs)}>"
+      "<#{tag}#{get_attrs(attrs)}>"
     end
 
     def self.paired?(tag)
@@ -14,8 +14,8 @@ module HexletCode
       !single_tags.include? tag
     end
 
-    def self.get_attr(options_part)
-      options_part.map { |key, value| " #{key}=\"#{value}\"" unless value.nil? }.join
+    def self.get_attrs(attrs)
+      attrs.map { |key, value| " #{key}=\"#{value}\"" unless value.nil? }.join
     end
   end
 end
