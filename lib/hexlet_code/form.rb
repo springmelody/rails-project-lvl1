@@ -6,6 +6,10 @@ module HexletCode
     autoload(:Text, 'hexlet_code/form_tags/text')
   end
 
+  module Formatters
+    autoload(:Html, 'hexlet_code/formatters/html')
+  end
+
   class Form
     def initialize(model)
       @model = model
@@ -23,6 +27,10 @@ module HexletCode
 
     def generate_structure
       @result.flatten(1)
+    end
+
+    def self.convert(structure, options, format = 'html')
+      (Formatters.const_get format.capitalize).new(structure, options).build
     end
   end
 end

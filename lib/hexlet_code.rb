@@ -9,6 +9,6 @@ module HexletCode
     yield(form) if block_given?
 
     structure = form.generate_structure
-    Parser.convert(structure, options)
+    Form.convert(structure, options)
   end
 end
