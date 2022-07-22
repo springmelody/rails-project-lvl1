@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 module HexletCode
-  autoload(:Input, 'hexlet_code/form_tags/input')
-  autoload(:Text, 'hexlet_code/form_tags/text')
+  module FormTags
+    autoload(:Input, 'hexlet_code/form_tags/input')
+    autoload(:Text, 'hexlet_code/form_tags/text')
+  end
 
   class Form
     def initialize(model)
@@ -12,7 +14,7 @@ module HexletCode
 
     def input(key, **options)
       type = options[:as] || :input
-      @result << (HexletCode.const_get type.capitalize).new(@model, key, options).build
+      @result << (FormTags.const_get type.capitalize).new(@model, key, options).build
     end
 
     def submit(value = 'Save')

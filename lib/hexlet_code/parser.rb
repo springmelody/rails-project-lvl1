@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 module HexletCode
-  autoload(:Html, 'hexlet_code/formatters/html')
+  module Formatters
+    autoload(:Html, 'hexlet_code/formatters/html')
+  end
 
   class Parser
     def self.convert(structure, options, format = 'html')
-      (HexletCode.const_get format.capitalize).new(structure, options).build
+      (Formatters.const_get format.capitalize).new(structure, options).build
     end
   end
 end
