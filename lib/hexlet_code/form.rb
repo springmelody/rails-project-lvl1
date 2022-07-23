@@ -18,7 +18,7 @@ module HexletCode
 
     def input(key, **options)
       type = options[:as] || :input
-      @result << (FormTags.const_get type.capitalize).new(@model, key, options).build
+      @result << (FormTags.const_get type.capitalize).new(@model, key, options.except(:as)).build
     end
 
     def submit(value = 'Save')

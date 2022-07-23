@@ -2,18 +2,16 @@
 
 module HexletCode
   module FormTags
-    class Text
-      def initialize(model, key, options = {})
-        @model = model
-        @key = key
-        @options = options
-        @content = model.public_send(key)
-      end
+    autoload(:Base, 'hexlet_code/form_tags/base')
 
+    class Text < Base
       def build
+        cols = @options.fetch(cols, '20')
+        rows = @options.fetch(rows, '40')
+
         [
-          { tag: 'label', attrs: { for: @key }, content: @key.capitalize },
-          { tag: 'textarea', attrs: { name: @key }.merge(@options), content: @content }
+          label,
+          { tag: 'textarea', attrs: { cols: cols, rows: rows, name: @key }.merge(@options), content: @value }
         ]
       end
     end

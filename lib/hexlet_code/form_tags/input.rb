@@ -2,16 +2,12 @@
 
 module HexletCode
   module FormTags
-    class Input
-      def initialize(model, key, options = {})
-        @key = key
-        @options = options
-        @value = model.public_send(key)
-      end
+    autoload(:Base, 'hexlet_code/form_tags/base')
 
+    class Input < Base
       def build
         [
-          { tag: 'label', attrs: { for: @key }, content: @key.capitalize },
+          label,
           { tag: 'input', attrs: { name: @key, type: 'text', value: @value }.merge(@options) }
         ]
       end
