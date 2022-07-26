@@ -1,14 +1,8 @@
 # frozen_string_literal: true
 
 module HexletCode
-  module FormTags
-    autoload(:Input, 'hexlet_code/form_tags/input')
-    autoload(:Text, 'hexlet_code/form_tags/text')
-  end
-
-  module Formatters
-    autoload(:Html, 'hexlet_code/formatters/html')
-  end
+  autoload(:FormTags, 'hexlet_code/form_tags')
+  autoload(:Formatters, 'hexlet_code/formatters')
 
   class Form
     def initialize(model)

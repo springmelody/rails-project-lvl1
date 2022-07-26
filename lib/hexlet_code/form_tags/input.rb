@@ -2,8 +2,6 @@
 
 module HexletCode
   module FormTags
-    autoload(:Base, 'hexlet_code/form_tags/base')
-
     class Input < Base
       def build
         [

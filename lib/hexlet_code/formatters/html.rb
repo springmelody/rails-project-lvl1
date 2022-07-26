@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module HexletCode
-  autoload(:Tag, 'hexlet_code/tag')
-
   module Formatters
     class Html
       def initialize(structure, options)
